@@ -11,48 +11,16 @@ public class PedidosTiendaMascotaStepDef {
 
     @Given("que la tienda este operativa")
     public void queLaTiendaEsteOperativa() {
-
     }
-
-    /*@When("se envía una solicitud POST a \"/store/order\" con un cuerpo válido")
-    public void seEnvíaUnaSolicitudPOSTAConUnCuerpoVálido() {
-        orden.enviarSolicitudPostOrdenValida(1, "placed");
-    }*/
 
     @Then("valida que el código de respuesta es {int}")
     public void validaCodigoRespuesta(int i) {
         orden.validateStatusCode(i);
     }
 
-    /*@And("valida que el campo {string} tiene el valor {int}")
-    public void validaCampoString(String campo, int valorEsperado) {
-        orden.validarCampoEnRespuesta(campo, valorEsperado);
-    }*/
-
-
-    @When("se envía una solicitud POST al endpoint \"/store/order\" con un cuerpo válido para el id {int} y estado {string}")
-    public void seEnviaUnaSolicitudPostConParametros(int id, String status) {
-        orden.enviarSolicitudPostOrdenValida(id, status);
-    }
-
-
     @When("se envía una solicitud GET donde el ID es {int}")
     public void seEnvíaUnaSolicitudGETDondeElIDEs(int id) {
         orden.enviarSolicitudGetOrden(id);
-    }
-
-    @When("se envía una solicitud POST con un cuerpo válido")
-    public void seEnvíaUnaSolicitudPOSTConUnCuerpoVálido() {
-        orden.enviarSolicitudPostOrdenValida(1, "placed");
-    }
-
-    /*@And("valida que el campo {string} tiene el valor {string}")
-    public void validaQueElCampoTieneElValor(String campo, int id) {
-        orden.validarCampoEnRespuesta(campo, id);
-    }*/
-
-    @And("valida que el campo <id> tiene el valor {string}")
-    public void validaQueElCampoIdTieneElValor(String arg0) {
     }
 
     @And("valida que el campo {string} tiene el valor {int}")
@@ -60,8 +28,14 @@ public class PedidosTiendaMascotaStepDef {
         orden.validarCampoEnRespuesta(String.valueOf(campo), id);
     }
 
+    @When("se envía una solicitud POST con un cuerpo válido donde el ID es {int} y el Status es {string}")
+    public void seEnvíaUnaSolicitudPOSTConUnCuerpoVálidoDondeElIDEsIdYElStatusEs(int id, String stat) {
+        orden.enviarSolicitudPostOrdenValida(id, stat);
+    }
+
     @And("valida que el campo {string} tiene el valor {string}")
-    public void validaQueElCampoTieneElValor(String arg0, String arg1) {
+    public void validaQueElCampoTieneElValor(String campo, String campovalor) {
+        orden.validarCampoRespuestaStatus(campo, campovalor);
     }
 }
 
